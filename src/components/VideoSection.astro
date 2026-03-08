@@ -1,0 +1,54 @@
+---
+import type {
+  VideoSection,
+  YouTubeVideoSection,
+} from '../content/siteData.types'
+
+interface Props {
+  section:
+    | VideoSection
+    | YouTubeVideoSection
+    | { heading: string; description: string; credits: string }
+}
+
+const { section } = Astro.props
+---
+
+<div class="video-section">
+  <h2 class="section-title">{section.heading}</h2>
+  <p class="section-desc">{section.description}</p>
+  <p class="section-credits">{section.credits}</p>
+
+  <slot />
+
+  <hr class="divider" />
+</div>
+
+<style>
+  .video-section {
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+    max-width: 800px;
+  }
+
+  .section-credits {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    white-space: pre-line;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+</style>

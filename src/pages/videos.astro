@@ -1,0 +1,117 @@
+---
+import { getEntry } from 'astro:content'
+import VideoPlayer from '../components/VideoPlayer'
+import VideoSection from '../components/VideoSection.astro'
+import Layout from '../layouts/Layout.astro'
+
+const contentEntry = await getEntry('pages', 'videos')
+if (!contentEntry) throw new Error('Videos page content not found')
+
+const videosEntry = await getEntry('site', 'videos')
+if (!videosEntry) throw new Error('Videos data not found')
+
+const videoSections = videosEntry.data.videoSections || []
+const promosSection = videosEntry.data.promosSection || []
+const youTubeVideoSections = videosEntry.data.youTubeVideoSections || []
+---
+
+<Layout title="Videos | Stephanie's Portfolio">
+  <section class="section videos-section">
+    <h1 class="page-heading">
+      <span class="highlight">{contentEntry.data.pageHeading}</span>
+    </h1>
+
+    {
+      videoSections.map((section) => (
+        <VideoSection section={section}>
+          {section.videos.length > 0 && (
+            <div class="video-grid">
+              {section.videos.map((video) => (
+                <div class={`video-item ${video.orientation}`}>
+                  <VideoPlayer type="wix" video={video} client:visible />
+                  <p class="video-title">{video.title}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </VideoSection>
+      ))
+    }
+
+    {
+      promosSection.map((section) => (
+        <VideoSection section={section}>
+          <div class="soundcloud-embed">
+            <iframe
+              width="100%"
+              height="300"
+              allow="autoplay"
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-498645039&color=%2327D3B4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+              title={contentEntry.data.soundCloudTitle}
+              loading="lazy"
+            />
+          </div>
+        </VideoSection>
+      ))
+    }
+
+    {
+      youTubeVideoSections.map((section) => (
+        <VideoSection section={section}>
+          {section.videos.length > 0 && (
+            <div class="video-grid">
+              {section.videos.map((video) => (
+                <div class={`video-item ${video.orientation}`}>
+                  <VideoPlayer type="youtube" video={video} client:visible />
+                  <p class="video-title">{video.title}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </VideoSection>
+      ))
+    }
+  </section>
+</Layout>
+
+<style>
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .video-item.portrait {
+    justify-self: center;
+  }
+
+  .video-item.landscape {
+    grid-column: span 3;
+    width: 100%;
+    justify-self: center;
+  }
+
+  .video-title {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .soundcloud-embed {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .soundcloud-embed iframe {
+    border: none;
+  }
+
+  @media (max-width: 600px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
