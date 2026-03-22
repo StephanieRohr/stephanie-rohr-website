@@ -1,18 +1,9 @@
-import { defineCollection, z } from 'astro:content'
+import { defineCollection } from 'astro:content'
+import { glob } from 'astro/loaders'
+import { z } from 'astro/zod'
 
-const pagesCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    pageHeading: z.string(),
-    subheading: z.string().optional(),
-    reachLabel: z.string().optional(),
-    imageAlt: z.string().optional(),
-    soundCloudTitle: z.string().optional(),
-  }),
-})
-
-const componentsCollection = defineCollection({
-  type: 'content',
+const contactForm = defineCollection({
+  loader: glob({ base: './src/content/contactForm', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     formIntro: z.string().optional(),
     labels: z
@@ -35,31 +26,47 @@ const componentsCollection = defineCollection({
   }),
 })
 
-const siteCollection = defineCollection({
-  type: 'content',
+const main = defineCollection({
+  loader: glob({ base: './src/content/main', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
-    name: z.string().optional(),
-    title: z.string().optional(),
-    description: z.string().optional(),
-    email: z.string().optional(),
-    phone: z.string().optional(),
-    nav: z
-      .array(
-        z.object({
-          label: z.string(),
-          href: z.string(),
-        }),
-      )
-      .optional(),
-    social: z
-      .array(
-        z.object({
-          name: z.string(),
-          url: z.string(),
-          icon: z.enum(['linkedin', 'soundcloud', 'facebook', 'instagram']),
-        }),
-      )
-      .optional(),
+    name: z.string(),
+    title: z.string(),
+    description: z.string(),
+    email: z.string(),
+    phone: z.string(),
+    nav: z.array(
+      z.object({
+        label: z.string(),
+        href: z.string(),
+      }),
+    ),
+    social: z.array(
+      z.object({
+        name: z.string(),
+        url: z.string(),
+        icon: z.enum(['linkedin', 'soundcloud', 'facebook', 'instagram']),
+      }),
+    ),
+  }),
+})
+
+const pages = defineCollection({
+  loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    pageHeading: z.string(),
+    subheading: z.string().optional(),
+    reachLabel: z.string().optional(),
+    imageAlt: z.string().optional(),
+    soundCloudTitle: z.string().optional(),
+  }),
+})
+
+const videos = defineCollection({
+  loader: glob({
+    base: './src/content/videos',
+    pattern: '**/*.{md,mdx}',
+  }),
+  schema: z.object({
     videoSections: z
       .array(
         z.object({
@@ -108,7 +115,8 @@ const siteCollection = defineCollection({
 })
 
 export const collections = {
-  pages: pagesCollection,
-  components: componentsCollection,
-  site: siteCollection,
+  contactForm,
+  main,
+  pages,
+  videos,
 }

@@ -1,8 +1,6 @@
 // @ts-check
-
-import netlify from '@astrojs/netlify';
+import netlify from '@astrojs/netlify'
 import react from '@astrojs/react'
-
 import { defineConfig } from 'astro/config'
 
 // https://astro.build/config

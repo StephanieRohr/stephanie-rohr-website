@@ -1,9 +1,12 @@
 ---
 import { getEntry, render } from 'astro:content'
+
+import ImageGallery from '../components/ImageGallery.astro'
 import Layout from '../layouts/Layout.astro'
 
 const contentEntry = await getEntry('pages', 'photos')
 if (!contentEntry) throw new Error('Photos page content not found')
+
 const { Content } = await render(contentEntry)
 ---
 
@@ -19,22 +22,27 @@ const { Content } = await render(contentEntry)
       </p>
     </div>
 
-    <div class="gallery-embed">
-      <iframe
-        width="100%"
-        height="400"
-        title="Google Drive"
-        aria-label="Google Drive"
-        scrolling="no"
-        allowfullscreen
-        allowtransparency="true"
-        allow="clipboard-write;autoplay;camera;microphone;geolocation;vr"
-        style="border: none; overflow: hidden;"
-        src="https://wixlabs-drive.appspot.com/widget?pageId=i0bc4&compId=comp-mbgl68yy&viewerCompId=comp-mbgl68yy&siteRevision=163&viewMode=site&deviceType=desktop&locale=en&tz=America%2FNew_York&regionalLanguage=en&width=895&height=870&instance=ObYjM4_8BSEOpapQ4KnX4BHcRUN7KXsn69n-dG7ybgk.eyJpbnN0YW5jZUlkIjoiNWEyYWEzNmUtNTBhYS00OTQwLTljYjQtNmI0ODg5ZGQ3YzY0IiwiYXBwRGVmSWQiOiIxMmQwMzkxZi1mN2EyLTlmNDMtMTUzZC04ODNmOTAxN2UyNTIiLCJtZXRhU2l0ZUlkIjoiZjRjNDRhMzItZDAyYS00OGRkLTlhZDAtYWY2MjYyYjE0Y2NiIiwic2lnbkRhdGUiOiIyMDI2LTAzLTA2VDIwOjEyOjM3LjU3MVoiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6IjgwMGY5OWQzLWE3NTctNGZlNS05NzAxLTI1YTUzMzJhMWViNiIsImJpVG9rZW4iOiJhZWVlZTk1Yy04MDgwLTAxOWQtMDY2NC1jNDJhZWI2YzMwYWYiLCJzaXRlT3duZXJJZCI6IjIxYmIzNDMwLTNiMmUtNGM0NS04YWEwLWE1MzA5MjI5MmZkMSIsImJzIjoiY1pDS0FZTjRfc1RDR2NFVTFfem4zdGI5dXFZcHZTQUFzak1pNkRTTHl2NCIsInNjZCI6IjIwMjEtMDItMDJUMDE6MDY6MzQuMTczWiJ9&currency=USD&currentCurrency=USD&commonConfig=%7B%22brand%22%3A%22wix%22%2C%22host%22%3A%22VIEWER%22%2C%22bsi%22%3A%22df58229e-7c3b-4d06-9351-8ec2e5989b8d%7C1%22%2C%22siteRevision%22%3A%22163%22%2C%22renderingFlow%22%3A%22NONE%22%2C%22language%22%3A%22en%22%2C%22locale%22%3A%22en-us%22%2C%22BSI%22%3A%22df58229e-7c3b-4d06-9351-8ec2e5989b8d%7C1%22%7D&currentRoute=.%2Fphotography&vsi=a06d480f-3f0a-4ff0-8902-ff8c8992035b"
-      ></iframe>
-    </div>
+    <ImageGallery directory="ActionSportsPhotography" />
 
     <hr class="divider" />
+
+    <ImageGallery directory="EventPhotography" />
+
+    <hr class="divider" />
+
+    <ImageGallery directory="Graphics" />
+
+    <hr class="divider" />
+
+    <ImageGallery directory="HeadshotPhotos" />
+
+    <hr class="divider" />
+
+    <ImageGallery directory="ProductPhotos" />
+
+    <hr class="divider" />
+
+    <ImageGallery directory="ScenicNaturePhotos" />
   </section>
 </Layout>
 

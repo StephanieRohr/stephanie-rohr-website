@@ -3,15 +3,18 @@ import { getEntry } from 'astro:content'
 import Navigation from './Navigation'
 import SocialBar from './SocialBar'
 
-const siteEntry = await getEntry('site', 'main')
-if (!siteEntry) throw new Error('Site content not found')
-const siteData = siteEntry.data
+const mainEntry = await getEntry('main', 'main')
+if (!mainEntry) throw new Error('Site content not found')
 ---
 
 <header class="site-header">
   <div class="header-inner">
-    <Navigation client:visible name={siteData.name!} nav={siteData.nav!} />
-    <SocialBar links={siteData.social!} />
+    <Navigation
+      client:visible
+      name={mainEntry.data.name}
+      nav={mainEntry.data.nav}
+    />
+    <SocialBar links={mainEntry.data.social} />
   </div>
 </header>
 

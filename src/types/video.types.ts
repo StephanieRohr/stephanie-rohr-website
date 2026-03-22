@@ -6,7 +6,6 @@ export interface VideoItem {
 
 export interface Section {
   heading: string
-  subheading?: string
   description: string
   credits: string
 }

@@ -1,42 +1,43 @@
 ---
-import { getEntry } from 'astro:content'
+import { getCollection, getEntry } from 'astro:content'
+
 import ContactForm from '../components/ContactForm'
 import Layout from '../layouts/Layout.astro'
 
 const contentEntry = await getEntry('pages', 'contact')
 if (!contentEntry) throw new Error('Contact page content not found')
-const content = contentEntry.data
 
-const formContentEntry = await getEntry('components', 'contactform')
-if (!formContentEntry) throw new Error('Contact form content not found')
-const formContent = formContentEntry.data
+const contactFormCollection = await getCollection('contactForm')
+if (!contactFormCollection) throw new Error('Contact form content not found')
+const contactFormEntry = contactFormCollection[0]
 
-const siteEntry = await getEntry('site', 'main')
-if (!siteEntry) throw new Error('Site data not found')
-const siteData = siteEntry.data
+const mainCollection = await getCollection('main')
+if (!mainCollection) throw new Error('Site data not found')
+const mainEntry = mainCollection[0]
 ---
 
 <Layout title="Contact | Stephanie's Portfolio">
   <section class="section contact-section">
     <h1 class="page-heading">
-      <span class="highlight">{content.pageHeading}</span>
+      <span class="highlight">{contentEntry.data.pageHeading}</span>
     </h1>
-    <h2 class="subheading">{content.subheading}</h2>
+    <h2 class="subheading">{contentEntry.data.subheading}</h2>
 
     <div class="contact-info">
-      <p class="reach-label">{content.reachLabel}</p>
+      <p class="reach-label">{contentEntry.data.reachLabel}</p>
       <p>
-        <a href={`mailto:${siteData.email}`}>{siteData.email}</a>
+        <a href={`mailto:${mainEntry.data.email}`}>{mainEntry.data.email}</a>
       </p>
       <p>
-        <a href={`tel:${siteData.phone?.replace(/-/g, "")}`}>{siteData.phone}</a
+        <a href={`tel:${mainEntry.data.phone?.replace(/-/g, "")}`}
+          >{mainEntry.data.phone}</a
         >
       </p>
     </div>
 
     <hr class="divider" />
 
-    <ContactForm client:visible content={formContent} />
+    <ContactForm client:visible content={contactFormEntry.data} />
   </section>
 </Layout>
 

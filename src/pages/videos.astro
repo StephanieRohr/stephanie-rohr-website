@@ -1,14 +1,23 @@
 ---
-import { getEntry } from 'astro:content'
+import { getCollection, getEntry } from 'astro:content'
+
 import VideoPlayer from '../components/VideoPlayer'
 import VideoSection from '../components/VideoSection.astro'
 import Layout from '../layouts/Layout.astro'
+import type {
+  Section,
+  VideoItem,
+  VideoSection as VideoSectionType,
+  YouTubeVideoItem,
+  YouTubeVideoSection as YouTubeVideoSectionType,
+} from '../types/video.types'
 
 const contentEntry = await getEntry('pages', 'videos')
 if (!contentEntry) throw new Error('Videos page content not found')
 
-const videosEntry = await getEntry('site', 'videos')
-if (!videosEntry) throw new Error('Videos data not found')
+const videosCollection = await getCollection('videos')
+if (!videosCollection) throw new Error('Videos data not found')
+const videosEntry = videosCollection[0]
 
 const videoSections = videosEntry.data.videoSections || []
 const promosSection = videosEntry.data.promosSection || []
@@ -22,11 +31,11 @@ const youTubeVideoSections = videosEntry.data.youTubeVideoSections || []
     </h1>
 
     {
-      videoSections.map((section) => (
+      videoSections.map((section: VideoSectionType) => (
         <VideoSection section={section}>
           {section.videos.length > 0 && (
             <div class="video-grid">
-              {section.videos.map((video) => (
+              {section.videos.map((video: VideoItem) => (
                 <div class={`video-item ${video.orientation}`}>
                   <VideoPlayer type="wix" video={video} client:visible />
                   <p class="video-title">{video.title}</p>
@@ -39,7 +48,7 @@ const youTubeVideoSections = videosEntry.data.youTubeVideoSections || []
     }
 
     {
-      promosSection.map((section) => (
+      promosSection.map((section: Section) => (
         <VideoSection section={section}>
           <div class="soundcloud-embed">
             <iframe
@@ -56,11 +65,11 @@ const youTubeVideoSections = videosEntry.data.youTubeVideoSections || []
     }
 
     {
-      youTubeVideoSections.map((section) => (
+      youTubeVideoSections.map((section: YouTubeVideoSectionType) => (
         <VideoSection section={section}>
           {section.videos.length > 0 && (
             <div class="video-grid">
-              {section.videos.map((video) => (
+              {section.videos.map((video: YouTubeVideoItem) => (
                 <div class={`video-item ${video.orientation}`}>
                   <VideoPlayer type="youtube" video={video} client:visible />
                   <p class="video-title">{video.title}</p>

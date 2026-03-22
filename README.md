@@ -60,8 +60,13 @@ Everything else under `src/` is the code that turns those files into the actual 
 You need [Bun](https://bun.sh) installed. Then from a terminal in this folder:
 
 ```sh
-bun install      # First time only — installs all dependencies
-bun dev          # Starts the dev server at http://localhost:4321
+bun install                 # First time only — installs all dependencies
+bun run dev                 # Starts the dev server at http://localhost:4321
+bun run sync                # Syncs content collections (run this after adding new content files)
+bun run astro:check         # Checks for content formatting errors
+bun run astro:check:write   # Auto-fixes content formatting errors
+bun run biome:check         # Checks for code formatting errors
+bun run biome:check:write   # Auto-fixes code formatting errors
 ```
 
 Open `http://localhost:4321` in your browser and you'll see the site live. Any time you save a content file, the browser will automatically refresh.
@@ -70,7 +75,6 @@ To build the final production version:
 
 ```sh
 bun build        # Output goes to ./dist/
-bun preview      # Preview the built site before deploying
 ```
 
 ---
@@ -107,7 +111,7 @@ Open **`src/content/pages/about.md`**.
 
 The text below the `---` line (called the "body") is your bio. Edit it freely — it supports standard Markdown (paragraphs, **bold**, *italic*, etc.).
 
-The `imageAlt` field at the top controls the accessibility label for your headshot image. The headshot itself is hosted on Wix. To swap it for a different photo, update the Wix CDN URL inside `src/pages/about.astro` (search for `static.wixstatic.com`).
+The `imageAlt` field at the top controls the accessibility label for your headshot image. The headshot photo is stored locally at `src/images/Stephanie_Rohr_Headshot.jpg`. To swap it for a different photo, replace that file (keeping the same filename) or update the import path inside `src/pages/about.astro`.
 
 ---
 
@@ -117,7 +121,7 @@ Open **`src/content/pages/photos.md`**.
 
 The body text describes your photography work and equipment. Edit it freely.
 
-The embedded photo gallery loads from Wix. To swap it for a different gallery, update the `src` URL of the `<iframe>` inside `src/pages/photos.astro`.
+The photo galleries are rendered from local images stored in subdirectories under `src/images/` (e.g., `ActionSportsPhotography/`, `EventPhotography/`, etc.). Each directory becomes a gallery section on the page via the `ImageGallery` component. To add photos, place new image files in the appropriate subdirectory. To add a new gallery section, create a new subdirectory under `src/images/` and add an `<ImageGallery directory="YourNewFolder" />` entry in `src/pages/photos.astro`.
 
 ---
 
@@ -153,7 +157,7 @@ Same structure as above, but use a full YouTube URL instead of a `videoId`:
 - heading: "YouTube Work"
   videos:
     - title: "My YouTube Video"
-      url: "https://youtu.be/XXXXXXXXXXX"
+      videoUrl: "https://youtu.be/XXXXXXXXXXX"
       orientation: landscape
 ```
 
@@ -253,6 +257,7 @@ Write your page content here. This is standard Markdown — paragraphs, **bold**
 stephanie-rohr-website/
 ├── public/               # Static files (favicon, etc.)
 ├── src/
+│   ├── content.config.ts # Content collection schemas (code)
 │   ├── content/          # ← All editable content lives here
 │   │   ├── site/
 │   │   │   ├── main.md   # Global: name, email, phone, nav, social links
@@ -264,6 +269,7 @@ stephanie-rohr-website/
 │   │   │   └── videos.md
 │   │   └── components/
 │   │       └── contactForm.md  # Contact form labels and messages
+│   ├── images/           # Local images (headshot, photo galleries)
 │   ├── pages/            # Page templates (code — edit with care)
 │   ├── components/       # UI components (code — edit with care)
 │   ├── layouts/          # Page shell with header/footer (code)

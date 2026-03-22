@@ -73,7 +73,7 @@ promosSection:
 
 youTubeVideoSections:
   - heading: "In-A-Chord Promotional Videos"
-    description: "These audio files were created as part of my Audio Production 1 and 2 courses, for High Point's Online Student Radio (HPUR The Sound), and for my Internship w/ 98.7 Simon. (2017–2019). These videos were made during my internship with the band In-A-Chord for Youtube (2017)."
+    description: "These videos were created as part of my Audio Production 1 and 2 courses, for High Point's Online Student Radio (HPUR The Sound), and for my Internship w/ 98.7 Simon. (2017–2019). These videos were made during my internship with the band In-A-Chord for Youtube (2017)."
     credits: "Program Used: Adobe Premiere.\nEditing, Creation, Scripting, Vocals: Stephanie Rohr."
     videos:
       - title: "Down to The River Lyric Video"

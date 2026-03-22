@@ -23,7 +23,12 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-.claude
-CLAUDE.md
+# CLAUDE
+# .claude
+# CLAUDE.md
+# **/CLAUDE.md
 
 .vscode
+
+# Local Netlify folder
+.netlify

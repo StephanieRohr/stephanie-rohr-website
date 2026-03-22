@@ -1,11 +1,13 @@
 ---
 import { Image } from 'astro:assets'
 import { getEntry, render } from 'astro:content'
+
+import myImage from '../images/Stephanie_Rohr_Headshot.jpg'
 import Layout from '../layouts/Layout.astro'
 
 const contentEntry = await getEntry('pages', 'about')
 if (!contentEntry) throw new Error('About page content not found')
-const content = contentEntry.data
+
 const { Content } = await render(contentEntry)
 ---
 
@@ -14,7 +16,7 @@ const { Content } = await render(contentEntry)
     <div class="about-container">
       <div class="about-content">
         <h1 class="page-heading">
-          <span class="highlight">{content.pageHeading}</span>
+          <span class="highlight">{contentEntry.data.pageHeading}</span>
         </h1>
 
         <div class="bio">
@@ -24,8 +26,8 @@ const { Content } = await render(contentEntry)
 
       <div class="headshot-wrapper">
         <Image
-          src="https://static.wixstatic.com/media/21bb34_304c8cf7f9844d73b1ea1ca702e390af~mv2.jpg/v1/crop/x_0,y_88,w_1803,h_1803/fill/w_508,h_508,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Stephanie_Rohr_Headshot.jpg"
-          alt={content.imageAlt || "Stephanie Rohr headshot"}
+          src={myImage}
+          alt={contentEntry.data.imageAlt || "Stephanie Rohr headshot"}
           width="508"
           height="508"
           loading="eager"

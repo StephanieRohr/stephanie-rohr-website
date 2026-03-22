@@ -1,0 +1,35 @@
+---
+import ImageGalleryLightbox from './ImageGalleryLightbox'
+import 'react-photo-album/masonry.css'
+
+type ImageDirectory =
+  | 'ActionSportsPhotography'
+  | 'EventPhotography'
+  | 'Graphics'
+  | 'HeadshotPhotos'
+  | 'ProductPhotos'
+  | 'ScenicNaturePhotos'
+
+interface Props {
+  directory: ImageDirectory
+}
+
+const { directory } = Astro.props
+
+// Glob all images under src/images/ — pattern must be a static string literal
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/images/**/*.{jpeg,jpg,png,gif}',
+  { eager: true },
+)
+
+// Filter to only the requested directory and extract serializable data
+const images = Object.entries(allImages)
+  .filter(([path]) => path.startsWith(`/src/images/${directory}/`))
+  .map(([, mod]) => ({
+    src: mod.default.src,
+    width: mod.default.width,
+    height: mod.default.height,
+  }))
+---
+
+<ImageGalleryLightbox images={images} client:visible />

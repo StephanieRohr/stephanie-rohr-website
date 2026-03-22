@@ -1,5 +1,5 @@
 import ReactPlayer from 'react-player'
-import type { VideoItem, YouTubeVideoItem } from '../content/siteData.types'
+import type { VideoItem, YouTubeVideoItem } from '../types/video.types'
 
 type VideoPlayerProps =
   | {

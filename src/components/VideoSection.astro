@@ -1,14 +1,12 @@
 ---
 import type {
+  Section,
   VideoSection,
   YouTubeVideoSection,
-} from '../content/siteData.types'
+} from '../types/video.types'
 
 interface Props {
-  section:
-    | VideoSection
-    | YouTubeVideoSection
-    | { heading: string; description: string; credits: string }
+  section: Section | VideoSection | YouTubeVideoSection
 }
 
 const { section } = Astro.props
