@@ -1,10 +1,14 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to AI agent (claude.ai/code) when working with code in this repository.
+This file provides guidance to AI agent when working with code in this repository.
+
+## Task Completion Requirements
+
+- All of `bun run astro:check`, `bun run biome:check`, and `bun run build` must pass before considering tasks completed.
 
 ## Commands
 
-Requires [Bun](https://bun.sh) 1.x.
+Requires [Bun](https://bun.sh).
 
 ```bash
 bun install          # Install dependencies
@@ -12,6 +16,7 @@ bun run dev          # Start dev server at http://localhost:4321
 bun run build        # Build for production
 bun run sync         # Regenerate TS types after adding/renaming content .md files
 bun run astro:check  # Validate content collection schemas
+bun run astro:check:write  # Auto-fix content collection schema issues
 bun run biome:check  # Lint and format check
 bun run biome:check:write  # Auto-fix lint/format issues
 ```
@@ -42,6 +47,7 @@ After editing any `.md` file, run `bun run sync` if TypeScript types are stale.
 ### Video Player
 
 `src/components/VideoPlayer.tsx` is a polymorphic React component handling three video types:
+
 - **Wix**: Constructs URL from `videoId` → `https://video.wixstatic.com/video/{id}/720p/mp4/file.mp4`
 - **YouTube**: Passes URL to `react-player`
 - **Hero**: Full-screen YouTube variant used on the home page
