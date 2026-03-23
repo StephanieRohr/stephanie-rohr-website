@@ -3,7 +3,6 @@
    ============================================ */
 
 /* Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 
 :root {
   /* Colors */
@@ -17,7 +16,6 @@
   --color-title: #222222;
 
   /* Typography */
-  --font-heading: "Raleway", sans-serif;
   --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   /* Layout */
