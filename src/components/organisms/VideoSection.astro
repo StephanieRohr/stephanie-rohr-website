@@ -1,0 +1,32 @@
+---
+import type {
+  Section,
+  VideoSection,
+  YouTubeVideoSection,
+} from '../../types/video.types'
+import VideoSectionHeader from '../molecules/VideoSectionHeader.astro'
+
+interface Props {
+  section: Section | VideoSection | YouTubeVideoSection
+}
+
+const { section } = Astro.props
+---
+
+<div class="video-section">
+  <VideoSectionHeader
+    heading={section.heading}
+    description={section.description}
+    credits={section.credits}
+  />
+
+  <slot />
+
+  <hr class="divider" />
+</div>
+
+<style>
+  .video-section {
+    margin-bottom: 1rem;
+  }
+</style>

@@ -1,32 +1,20 @@
 ---
-import type {
-  Section,
-  VideoSection,
-  YouTubeVideoSection,
-} from '../types/video.types'
-
 interface Props {
-  section: Section | VideoSection | YouTubeVideoSection
+  heading: string
+  description: string
+  credits: string
 }
 
-const { section } = Astro.props
+const { heading, description, credits } = Astro.props
 ---
 
-<div class="video-section">
-  <h2 class="section-title">{section.heading}</h2>
-  <p class="section-desc">{section.description}</p>
-  <p class="section-credits">{section.credits}</p>
-
-  <slot />
-
-  <hr class="divider" />
-</div>
+<>
+  <h2 class="section-title">{heading}</h2>
+  <p class="section-desc">{description}</p>
+  <p class="section-credits">{credits}</p>
+</>
 
 <style>
-  .video-section {
-    margin-bottom: 1rem;
-  }
-
   .section-title {
     font-family: var(--font-heading);
     font-size: 1.5rem;

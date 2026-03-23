@@ -1,8 +1,8 @@
 ---
-import { getCollection, getEntry } from 'astro:content'
+import { getEntry } from 'astro:content'
 
-import VideoPlayer from '../components/VideoPlayer'
-import VideoSection from '../components/VideoSection.astro'
+import VideoPlayer from '../components/atoms/VideoPlayer'
+import VideoSection from '../components/organisms/VideoSection.astro'
 import Layout from '../layouts/Layout.astro'
 import type {
   Section,
@@ -15,9 +15,8 @@ import type {
 const contentEntry = await getEntry('pages', 'videos')
 if (!contentEntry) throw new Error('Videos page content not found')
 
-const videosCollection = await getCollection('videos')
-if (!videosCollection) throw new Error('Videos data not found')
-const videosEntry = videosCollection[0]
+const videosEntry = await getEntry('videos', 'videos')
+if (!videosEntry) throw new Error('Videos data not found')
 
 const videoSections = videosEntry.data.videoSections || []
 const promosSection = videosEntry.data.promosSection || []

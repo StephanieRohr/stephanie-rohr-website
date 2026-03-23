@@ -1,19 +1,17 @@
 ---
 import { getCollection, getEntry } from 'astro:content'
 
-import ContactForm from '../components/ContactForm'
+import ContactForm from '../components/organisms/ContactForm'
 import Layout from '../layouts/Layout.astro'
 
 const contentEntry = await getEntry('pages', 'contact')
 if (!contentEntry) throw new Error('Contact page content not found')
 
-const contactFormCollection = await getCollection('contactForm')
-if (!contactFormCollection) throw new Error('Contact form content not found')
-const contactFormEntry = contactFormCollection[0]
+const contactFormEntry = await getEntry('contactForm', 'contactform')
+if (!contactFormEntry) throw new Error('Contact form content not found')
 
-const mainCollection = await getCollection('main')
-if (!mainCollection) throw new Error('Site data not found')
-const mainEntry = mainCollection[0]
+const mainEntry = await getEntry('main', 'main')
+if (!mainEntry) throw new Error('Site data not found')
 ---
 
 <Layout title="Contact | Stephanie's Portfolio">

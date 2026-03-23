@@ -1,7 +1,8 @@
 ---
 import { getEntry } from 'astro:content'
-import Navigation from './Navigation'
-import SocialBar from './SocialBar'
+import BrandLink from '../atoms/BrandLink'
+import NavigationMenu from '../molecules/NavigationMenu'
+import SocialLinks from '../molecules/SocialLinks'
 
 const mainEntry = await getEntry('main', 'main')
 if (!mainEntry) throw new Error('Site content not found')
@@ -9,12 +10,12 @@ if (!mainEntry) throw new Error('Site content not found')
 
 <header class="site-header">
   <div class="header-inner">
-    <Navigation
-      client:visible
-      name={mainEntry.data.name}
+    <BrandLink client:load name={mainEntry.data.name} />
+    <NavigationMenu
+      client:load
       nav={mainEntry.data.nav}
     />
-    <SocialBar links={mainEntry.data.social} />
+    <SocialLinks client:load links={mainEntry.data.social} />
   </div>
 </header>
 

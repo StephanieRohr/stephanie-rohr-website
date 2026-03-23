@@ -1,5 +1,5 @@
 ---
-import ImageGalleryLightbox from './ImageGalleryLightbox'
+import ImageGalleryLightbox from '../molecules/ImageGalleryLightbox'
 import 'react-photo-album/masonry.css'
 
 type ImageDirectory =
@@ -16,13 +16,11 @@ interface Props {
 
 const { directory } = Astro.props
 
-// Glob all images under src/images/ — pattern must be a static string literal
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/**/*.{jpeg,jpg,png,gif}',
   { eager: true },
 )
 
-// Filter to only the requested directory and extract serializable data
 const images = Object.entries(allImages)
   .filter(([path]) => path.startsWith(`/src/images/${directory}/`))
   .map(([, mod]) => ({

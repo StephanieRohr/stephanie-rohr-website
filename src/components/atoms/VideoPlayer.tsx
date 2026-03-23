@@ -1,5 +1,5 @@
 import ReactPlayer from 'react-player'
-import type { VideoItem, YouTubeVideoItem } from '../types/video.types'
+import type { VideoItem, YouTubeVideoItem } from '../../types/video.types'
 
 type VideoPlayerProps =
   | {
@@ -19,7 +19,6 @@ type VideoPlayerProps =
       boxShadow?: string
     }
 
-/** Helper to build a Wix video URL */
 const wixVideoUrl = (
   videoId: string,
   quality: '480p' | '720p' | '1080p' = '720p',

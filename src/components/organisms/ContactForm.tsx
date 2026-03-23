@@ -1,5 +1,7 @@
 import { type SubmitEventHandler, useState } from 'react'
 
+import FormField from '../atoms/FormField'
+
 type ContactFormContent = {
   formIntro?: string
   labels?: {
@@ -63,10 +65,10 @@ export default function ContactForm({ content }: ContactFormProps) {
       </p>
 
       <div className="form-row">
-        <div className="form-field">
-          <label htmlFor="first-name">
-            {content.labels?.firstName || 'First Name'}
-          </label>
+        <FormField
+          htmlFor="first-name"
+          label={content.labels?.firstName || 'First Name'}
+        >
           <input
             type="text"
             id="first-name"
@@ -74,11 +76,12 @@ export default function ContactForm({ content }: ContactFormProps) {
             maxLength={100}
             autoComplete="given-name"
           />
-        </div>
-        <div className="form-field">
-          <label htmlFor="last-name">
-            {content.labels?.lastName || 'Last Name'}
-          </label>
+        </FormField>
+
+        <FormField
+          htmlFor="last-name"
+          label={content.labels?.lastName || 'Last Name'}
+        >
           <input
             type="text"
             id="last-name"
@@ -86,11 +89,13 @@ export default function ContactForm({ content }: ContactFormProps) {
             maxLength={100}
             autoComplete="family-name"
           />
-        </div>
+        </FormField>
       </div>
 
-      <div className="form-field">
-        <label htmlFor="company">{content.labels?.company || 'Company'}</label>
+      <FormField
+        htmlFor="company"
+        label={content.labels?.company || 'Company'}
+      >
         <input
           type="text"
           id="company"
@@ -98,28 +103,22 @@ export default function ContactForm({ content }: ContactFormProps) {
           maxLength={100}
           autoComplete="organization"
         />
-      </div>
+      </FormField>
 
-      <div className="form-field">
-        <label htmlFor="email">
-          {content.labels?.email || 'Email'}
-          <span className="required">
-            {` ${content.requiredIndicator ?? ' *'}`}
-          </span>
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          autoComplete="email"
-        />
-      </div>
+      <FormField
+        htmlFor="email"
+        label={content.labels?.email || 'Email'}
+        requiredIndicator={content.requiredIndicator ?? '*'}
+      >
+        <input type="email" id="email" name="email" required autoComplete="email" />
+      </FormField>
 
-      <div className="form-field">
-        <label htmlFor="message">{content.labels?.message || 'Message'}</label>
+      <FormField
+        htmlFor="message"
+        label={content.labels?.message || 'Message'}
+      >
         <textarea id="message" name="message" rows={5} />
-      </div>
+      </FormField>
 
       <button type="submit" className="btn-submit" disabled={sending}>
         {sending
