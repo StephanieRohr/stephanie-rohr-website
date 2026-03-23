@@ -14,4 +14,7 @@ export default defineConfig({
       provider: fontProviders.google(),
     },
   ],
+  vite: {
+    appType: 'mpa',
+  },
 })
