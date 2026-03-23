@@ -1,6 +1,7 @@
 ---
 import { Font } from 'astro:assets'
 import { getEntry } from 'astro:content'
+import { ClientRouter } from 'astro:transitions'
 
 import '../styles/global.css'
 import Footer from '../components/organisms/Footer.astro'
@@ -29,6 +30,7 @@ const {
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <Font cssVariable="--font-heading" preload />
+    <ClientRouter />
     <title>{title}</title>
   </head>
   <body>
