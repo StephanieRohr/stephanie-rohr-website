@@ -92,10 +92,7 @@ export default function ContactForm({ content }: ContactFormProps) {
         </FormField>
       </div>
 
-      <FormField
-        htmlFor="company"
-        label={content.labels?.company || 'Company'}
-      >
+      <FormField htmlFor="company" label={content.labels?.company || 'Company'}>
         <input
           type="text"
           id="company"
@@ -110,13 +107,16 @@ export default function ContactForm({ content }: ContactFormProps) {
         label={content.labels?.email || 'Email'}
         requiredIndicator={content.requiredIndicator ?? '*'}
       >
-        <input type="email" id="email" name="email" required autoComplete="email" />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          autoComplete="email"
+        />
       </FormField>
 
-      <FormField
-        htmlFor="message"
-        label={content.labels?.message || 'Message'}
-      >
+      <FormField htmlFor="message" label={content.labels?.message || 'Message'}>
         <textarea id="message" name="message" rows={5} />
       </FormField>
 
