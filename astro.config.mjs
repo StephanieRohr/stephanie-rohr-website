@@ -16,5 +16,8 @@ export default defineConfig({
   ],
   vite: {
     appType: 'mpa',
+    build: {
+      chunkSizeWarningLimit: 1024,
+    },
   },
 })
