@@ -1,12 +1,20 @@
 import { useState } from 'react'
 
 import { NavToggleButton } from '../atoms/NavToggleButton'
+import { SocialLinks } from './SocialLinks'
+
+type SocialLink = {
+  name: string
+  url: string
+  icon: 'linkedin' | 'soundcloud' | 'facebook' | 'instagram'
+}
 
 interface NavigationMenuProps {
   nav: Array<{ label: string; href: string }>
+  social?: readonly SocialLink[]
 }
 
-export const NavigationMenu = ({ nav }: NavigationMenuProps) => {
+export const NavigationMenu = ({ nav, social }: NavigationMenuProps) => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -32,6 +40,11 @@ export const NavigationMenu = ({ nav }: NavigationMenuProps) => {
             </a>
           </li>
         ))}
+        {social && (
+          <li className="nav-social">
+            <SocialLinks links={social} />
+          </li>
+        )}
       </ul>
     </nav>
   )

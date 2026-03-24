@@ -185,48 +185,14 @@ h6 {
   color: var(--color-accent);
 }
 
-/* Hamburger toggle */
-.nav-toggle {
+.nav-social {
   display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
 }
 
-.hamburger {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--color-text);
-  position: relative;
-  transition: background 0.3s;
-}
-
-.hamburger::before,
-.hamburger::after {
-  content: "";
-  position: absolute;
-  width: 24px;
-  height: 2px;
-  background: var(--color-text);
-  left: 0;
-  transition: transform 0.3s;
-}
-
-.hamburger::before {
-  top: -7px;
-}
-.hamburger::after {
-  top: 7px;
-}
+/* Hamburger toggle — styles in Header.astro */
 
 /* Mobile responsive */
 @media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
-
   .nav-list {
     display: none;
     position: absolute;
@@ -254,6 +220,16 @@ h6 {
   }
 
   .social-bar {
+    display: none;
+  }
+
+  .nav-social {
+    display: block;
+    padding-top: 0.5rem;
+  }
+
+  .nav-social .social-bar {
+    display: flex;
     gap: 1rem;
   }
 }
