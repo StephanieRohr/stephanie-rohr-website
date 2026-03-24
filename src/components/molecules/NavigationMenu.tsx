@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-import NavToggleButton from '../atoms/NavToggleButton'
+import { NavToggleButton } from '../atoms/NavToggleButton'
 
 interface NavigationMenuProps {
   nav: Array<{ label: string; href: string }>
 }
 
-export default function NavigationMenu({ nav }: NavigationMenuProps) {
+export const NavigationMenu = ({ nav }: NavigationMenuProps) => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const toggleMenu = () => {

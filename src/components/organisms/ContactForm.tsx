@@ -1,6 +1,6 @@
 import { type SubmitEventHandler, useState } from 'react'
 
-import FormField from '../atoms/FormField'
+import { FormField } from '../atoms/FormField'
 
 type ContactFormContent = {
   formIntro?: string
@@ -23,7 +23,7 @@ type ContactFormProps = {
   content: ContactFormContent
 }
 
-export default function ContactForm({ content }: ContactFormProps) {
+export const ContactForm = ({ content }: ContactFormProps) => {
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
 

@@ -21,11 +21,7 @@ const socialIcons: Record<SocialIconName, IconType> = {
   instagram: FaInstagram,
 }
 
-export default function SocialIconLink({
-  icon,
-  name,
-  url,
-}: SocialIconLinkProps) {
+export const SocialIconLink = ({ icon, name, url }: SocialIconLinkProps) => {
   const Icon = socialIcons[icon]
 
   return (

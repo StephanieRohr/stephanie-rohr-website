@@ -21,7 +21,7 @@ interface Props {
   images: GalleryImage[]
 }
 
-export default function ImageGalleryLightbox({ images }: Props) {
+export const ImageGalleryLightbox = ({ images }: Props) => {
   const [index, setIndex] = useState(-1)
 
   return (

@@ -60,7 +60,7 @@ const getPlayerConfig = (props: VideoPlayerProps) => {
   }
 }
 
-export default function VideoPlayer(props: VideoPlayerProps) {
+export const VideoPlayer = (props: VideoPlayerProps) => {
   const config = getPlayerConfig(props)
 
   return (

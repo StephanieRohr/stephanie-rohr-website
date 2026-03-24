@@ -1,4 +1,4 @@
-import SocialIconLink from '../atoms/SocialIconLink'
+import { SocialIconLink } from '../atoms/SocialIconLink'
 
 type SocialLink = {
   name: string
@@ -10,7 +10,7 @@ type SocialLinksProps = {
   links: readonly SocialLink[]
 }
 
-export default function SocialLinks({ links }: SocialLinksProps) {
+export const SocialLinks = ({ links }: SocialLinksProps) => {
   return (
     <div className="social-bar">
       {links.map((social) => (

@@ -7,12 +7,12 @@ interface FormFieldProps {
   children: ReactNode
 }
 
-export default function FormField({
+export const FormField = ({
   htmlFor,
   label,
   requiredIndicator,
   children,
-}: FormFieldProps) {
+}: FormFieldProps) => {
   return (
     <div className="form-field">
       <label htmlFor={htmlFor}>

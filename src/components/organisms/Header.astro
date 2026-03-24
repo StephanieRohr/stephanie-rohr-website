@@ -1,8 +1,8 @@
 ---
 import { getEntry } from 'astro:content'
-import BrandLink from '../atoms/BrandLink'
-import NavigationMenu from '../molecules/NavigationMenu'
-import SocialLinks from '../molecules/SocialLinks'
+import { BrandLink } from '../atoms/BrandLink'
+import { NavigationMenu } from '../molecules/NavigationMenu'
+import { SocialLinks } from '../molecules/SocialLinks'
 
 const mainEntry = await getEntry('main', 'main')
 if (!mainEntry) throw new Error('Site content not found')

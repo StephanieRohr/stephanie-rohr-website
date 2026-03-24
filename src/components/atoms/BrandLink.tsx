@@ -3,7 +3,7 @@ interface BrandLinkProps {
   name: string
 }
 
-export default function BrandLink({ href = '/', name }: BrandLinkProps) {
+export const BrandLink = ({ href = '/', name }: BrandLinkProps) => {
   return (
     <a href={href} className="logo">
       {name}

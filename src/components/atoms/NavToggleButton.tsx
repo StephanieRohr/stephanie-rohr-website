@@ -4,11 +4,11 @@ interface NavToggleButtonProps {
   onClick: () => void
 }
 
-export default function NavToggleButton({
+export const NavToggleButton = ({
   expanded,
   controls,
   onClick,
-}: NavToggleButtonProps) {
+}: NavToggleButtonProps) => {
   return (
     <button
       type="button"
