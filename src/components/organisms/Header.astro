@@ -25,9 +25,26 @@ if (!mainEntry) throw new Error('Site content not found')
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(17, 17, 17, 0.95);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--color-line);
+    border-bottom: none;
+  }
+
+  /* Bottom gradient rule */
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--clr-trooper-a20) 30%,
+      var(--clr-trooper-a30) 70%,
+      transparent
+    );
   }
 
   .header-inner {

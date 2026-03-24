@@ -9,7 +9,7 @@ import Layout from '../layouts/Layout.astro'
       <VideoPlayer
         type="youtube-hero"
         url="https://www.youtube.com/watch?v=TCCUvF59fPc"
-        boxShadow="0 4px 30px rgba(39, 211, 180, 0.15)"
+        boxShadow="0 4px 30px rgba(0, 0, 0, 0.08)"
         client:visible
       />
     </div>
@@ -23,6 +23,11 @@ import Layout from '../layouts/Layout.astro'
     justify-content: center;
     min-height: calc(100vh - var(--nav-height));
     padding: 2rem 1.5rem;
+    background: linear-gradient(
+      180deg,
+      var(--clr-trooper-a0) 0%,
+      var(--clr-trooper-a10) 100%
+    );
   }
 
   .hero-inner {
