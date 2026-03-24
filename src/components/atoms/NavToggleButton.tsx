@@ -1,3 +1,5 @@
+// Inspired by https://cruip.com/hamburger-menu-button-animations-with-tailwind-css/
+
 interface NavToggleButtonProps {
   expanded: boolean
   controls: string
