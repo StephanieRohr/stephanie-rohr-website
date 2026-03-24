@@ -84,16 +84,6 @@ const videos = defineCollection({
         }),
       )
       .optional(),
-    promosSection: z
-      .array(
-        z.object({
-          heading: z.string(),
-          subheading: z.string().optional(),
-          description: z.string(),
-          credits: z.string(),
-        }),
-      )
-      .optional(),
     youTubeVideoSections: z
       .array(
         z.object({

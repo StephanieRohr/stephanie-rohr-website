@@ -37,39 +37,6 @@ videoSections:
       - title: "2022 Year In Review"
         videoId: "21bb34_66b5e81060e54a869871ce5edc13bd9e"
         orientation: "landscape"
-  - heading: "\"Bow to the Rebel Queen\" Qullia Promo Video"
-    description: "This video was created as an independent promotional project in collaboration with the musical artist & producer Quilla. (Nov./December 2021)."
-    credits: "Software Used: Final Cut Pro.\nVoice Over: Qullia.\nCinematography: Alexei Mejouev.\nVideo Editing: Stephanie Rohr."
-    videos:
-      - title: "Choreography Promo Video"
-        videoId: "21bb34_8d056eb610f2422ba744d7f80df8a0fd"
-        orientation: "landscape"
-  - heading: "A Day in the Life of a P.A. Vlog — \"Bow to the Rebel Queen\" Music Video"
-    description: "This video was recorded as an independent project in part of Quilla's \"Bow To The Rebel Queen\" Music Video (September 2021)."
-    credits: "Software Used: Final Cut Pro.\nVideo Creation, Vlog, & Editing: Stephanie Rohr."
-    videos:
-      - title: "Being a Production Assistant — Qullia"
-        videoId: "21bb34_c7336ec99db9471d9f554d11a80c6ae3"
-        orientation: "landscape"
-  - heading: "Welcome to Paradise Cover"
-    description: "This cover (and video) was recorded in part for my Recording Engineering 1 class (2020)."
-    credits: "DAW Used: ProTools.\nRecording Engineer: Stephanie Rohr.\nPerformed and Arranged by: Wil Church.\nArtist: Green Day."
-    videos:
-      - title: "One Man Band"
-        videoId: "21bb34_65af5939812742ca8b04d57234e3e3ae"
-        orientation: "landscape"
-  - heading: "\"The Light\" Music Video"
-    description: "This video was recorded in part for my Senior Production Experience class (2019)."
-    credits: "Program Used: Adobe Premiere.\nDirector, Story, Editing, Cinematography: Stephanie Rohr.\nActors: Stephanie Rohr, Wil Church, Bruce & Helen Rohr.\nArtist: Sara Barellies."
-    videos:
-      - title: "The Light"
-        videoId: "21bb34_13ab04f97c084440804e3536a9cc74d4"
-        orientation: "landscape"
-
-promosSection:
-  - heading: "Podcasts, Radio Sweepers, Ads, and Promos"
-    description: "These audio files were created as part of my Audio Production 1 and 2 courses, for High Point's Online Student Radio (HPUR The Sound), and for my Internship w/ 98.7 Simon. (2017–2019)."
-    credits: "Program Used: Adobe Audition.\nEditing, Creation, Scripting, Vocals: Stephanie Rohr."
 
 youTubeVideoSections:
   - heading: "In-A-Chord Promotional Videos"
@@ -78,18 +45,6 @@ youTubeVideoSections:
     videos:
       - title: "Down to The River Lyric Video"
         videoUrl: "https://www.youtube.com/watch?v=Pri0MUBdI48"
-        orientation: "landscape"
-      - title: "In-A-Chord's Along The Road of Faith Lyric Video"
-        videoUrl: "https://www.youtube.com/watch?v=DBP4S9z4IpM"
-        orientation: "landscape"
-      - title: "In-A-Chord's Visit to Matthews Senior Living"
-        videoUrl: "https://www.youtube.com/watch?v=a3KWVMw_JkU"
-        orientation: "landscape"
-      - title: "What Matthews Senior Living Residents are saying about In-A-Chord"
-        videoUrl: "https://www.youtube.com/watch?v=eQY2o5mmg70"
-        orientation: "landscape"
-      - title: "In-A-Chord Makes Music with Residents"
-        videoUrl: "https://www.youtube.com/watch?v=H4SMGfDE-0I"
         orientation: "landscape"
 ---
 
