@@ -274,5 +274,3 @@ stephanie-rohr-website/
 ├── package.json
 └── biome.json            # Code style rules
 ```
-
-test
