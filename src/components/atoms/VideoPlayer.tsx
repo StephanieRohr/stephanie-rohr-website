@@ -71,8 +71,11 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
       playsInline={props.type === 'wix'}
       loop={config.loop}
       muted={config.muted}
-      className="h-auto w-full overflow-hidden rounded-lg"
       style={{
+        borderRadius: '8px',
+        overflow: 'hidden',
+        width: '100%',
+        height: 'auto',
         aspectRatio: config.aspectRatio,
         ...(config.boxShadow && { boxShadow: config.boxShadow }),
       }}
