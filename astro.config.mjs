@@ -16,7 +16,6 @@ export default defineConfig({
     },
   ],
   vite: {
-    appType: 'mpa',
     plugins: [tailwindcss()],
     build: {
       chunkSizeWarningLimit: 1024,
