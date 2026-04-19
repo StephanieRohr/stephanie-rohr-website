@@ -4,8 +4,10 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Home | Stephanie's Portfolio">
-  <section class="hero">
-    <div class="hero-inner">
+  <section
+    class="gradient-hero flex min-h-[calc(100dvh-var(--spacing-nav))] items-center justify-center px-6 py-8"
+  >
+    <div class="w-full max-w-[900px]">
       <VideoPlayer
         type="youtube-hero"
         url="https://www.youtube.com/watch?v=TCCUvF59fPc"
@@ -15,23 +17,3 @@ import Layout from '../layouts/Layout.astro'
     </div>
   </section>
 </Layout>
-
-<style>
-  .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - var(--nav-height));
-    padding: 2rem 1.5rem;
-    background: linear-gradient(
-      180deg,
-      var(--clr-trooper-a0) 0%,
-      var(--clr-trooper-a10) 100%
-    );
-  }
-
-  .hero-inner {
-    max-width: 900px;
-    width: 100%;
-  }
-</style>

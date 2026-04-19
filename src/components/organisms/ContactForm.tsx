@@ -45,7 +45,7 @@ export const ContactForm = ({ content }: ContactFormProps) => {
 
   if (submitted) {
     return (
-      <div className="form-success">
+      <div className="font-heading p-8 text-center text-[1.2rem] text-accent">
         <p>{content.successMessage || 'Thanks for contacting me!'}</p>
       </div>
     )
@@ -53,18 +53,18 @@ export const ContactForm = ({ content }: ContactFormProps) => {
 
   return (
     <form
-      className="contact-form"
+      className="mx-auto max-w-[500px]"
       name="contact"
       method="POST"
       data-netlify="true"
       onSubmit={handleSubmit}
     >
       <input type="hidden" name="form-name" value="contact" />
-      <p className="form-intro">
+      <p className="mb-6 text-center text-base text-muted">
         {content.formIntro || 'OR! Send me a message here!'}
       </p>
 
-      <div className="form-row">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <FormField
           htmlFor="first-name"
           label={content.labels?.firstName || 'First Name'}
@@ -75,6 +75,7 @@ export const ContactForm = ({ content }: ContactFormProps) => {
             name="first-name"
             maxLength={100}
             autoComplete="given-name"
+            className="form-control"
           />
         </FormField>
 
@@ -88,6 +89,7 @@ export const ContactForm = ({ content }: ContactFormProps) => {
             name="last-name"
             maxLength={100}
             autoComplete="family-name"
+            className="form-control"
           />
         </FormField>
       </div>
@@ -99,6 +101,7 @@ export const ContactForm = ({ content }: ContactFormProps) => {
           name="company"
           maxLength={100}
           autoComplete="organization"
+          className="form-control"
         />
       </FormField>
 
@@ -113,14 +116,24 @@ export const ContactForm = ({ content }: ContactFormProps) => {
           name="email"
           required
           autoComplete="email"
+          className="form-control"
         />
       </FormField>
 
       <FormField htmlFor="message" label={content.labels?.message || 'Message'}>
-        <textarea id="message" name="message" rows={5} />
+        <textarea
+          id="message"
+          name="message"
+          rows={5}
+          className="form-control"
+        />
       </FormField>
 
-      <button type="submit" className="btn-submit" disabled={sending}>
+      <button
+        type="submit"
+        disabled={sending}
+        className="font-heading mt-2 w-full cursor-pointer rounded border-0 bg-accent p-3 text-[0.95rem] font-bold tracking-[0.1em] text-white transition-colors hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-60"
+      >
         {sending
           ? content.submitButton?.sending || 'Sending...'
           : content.submitButton?.default || 'Click To Send'}
