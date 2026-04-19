@@ -1,14 +1,14 @@
 import ReactPlayer from 'react-player'
-import type { VideoItem, YouTubeVideoItem } from '../../types/video.types'
+import type { YouTubeVideoItem } from '../../types/video.types'
 
 type VideoPlayerProps =
-  | {
-      type: 'wix'
-      video: VideoItem
-      autoplay?: boolean
-      loop?: boolean
-      muted?: boolean
-    }
+  // | {
+  //     type: 'wix'
+  //     video: VideoItem
+  //     autoplay?: boolean
+  //     loop?: boolean
+  //     muted?: boolean
+  //   }
   | {
       type: 'youtube'
       video: YouTubeVideoItem
@@ -19,23 +19,23 @@ type VideoPlayerProps =
       boxShadow?: string
     }
 
-const wixVideoUrl = (
-  videoId: string,
-  quality: '480p' | '720p' | '1080p' = '720p',
-) => `https://video.wixstatic.com/video/${videoId}/${quality}/mp4/file.mp4`
+// const wixVideoUrl = (
+//   videoId: string,
+//   quality: '480p' | '720p' | '1080p' = '720p',
+// ) => `https://video.wixstatic.com/video/${videoId}/${quality}/mp4/file.mp4`
 
 const getPlayerConfig = (props: VideoPlayerProps) => {
   switch (props.type) {
-    case 'wix':
-      return {
-        videoUrl: wixVideoUrl(props.video.videoId, '720p'),
-        aspectRatio:
-          props.video.orientation === 'portrait' ? '9 / 16' : '16 / 9',
-        autoplay: props.autoplay ?? true,
-        loop: props.loop ?? true,
-        muted: props.muted ?? true,
-        boxShadow: undefined,
-      }
+    // case 'wix':
+    //   return {
+    //     videoUrl: wixVideoUrl(props.video.videoId, '720p'),
+    //     aspectRatio:
+    //       props.video.orientation === 'portrait' ? '9 / 16' : '16 / 9',
+    //     autoplay: props.autoplay ?? true,
+    //     loop: props.loop ?? true,
+    //     muted: props.muted ?? true,
+    //     boxShadow: undefined,
+    //   }
     case 'youtube':
       return {
         videoUrl: props.video.videoUrl,
@@ -68,7 +68,7 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
       src={config.videoUrl}
       controls
       playing={config.autoplay}
-      playsInline={props.type === 'wix'}
+      // playsInline={props.type === 'wix'}
       loop={config.loop}
       muted={config.muted}
       style={{
