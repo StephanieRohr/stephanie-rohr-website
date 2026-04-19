@@ -11,6 +11,7 @@ submitButton:
   default: "Click To Send"
   sending: "Sending..."
 successMessage: "Thanks for contacting me!"
+errorMessage: "Something went wrong sending your message. Please try again or email me directly."
 ---
 
 <!-- Contact form content -->

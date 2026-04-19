@@ -17,6 +17,7 @@ type ContactFormContent = {
     sending: string
   }
   successMessage?: string
+  errorMessage?: string
 }
 
 type ContactFormProps = {
@@ -26,21 +27,35 @@ type ContactFormProps = {
 export const ContactForm = ({ content }: ContactFormProps) => {
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
     setSending(true)
-    const formData = new FormData(e.currentTarget)
-    const body = new URLSearchParams(
-      formData as unknown as Record<string, string>,
-    ).toString()
-    await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body,
-    })
-    setSending(false)
-    setSubmitted(true)
+    setError(null)
+    try {
+      const formData = new FormData(e.currentTarget)
+      const body = new URLSearchParams(
+        formData as unknown as Record<string, string>,
+      ).toString()
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+      })
+      if (!response.ok) {
+        throw new Error(`Form submission failed (${response.status})`)
+      }
+      setSubmitted(true)
+    } catch (err) {
+      console.error('Contact form submission error:', err)
+      setError(
+        content.errorMessage ||
+          'Something went wrong sending your message. Please try again.',
+      )
+    } finally {
+      setSending(false)
+    }
   }
 
   if (submitted) {
@@ -57,9 +72,18 @@ export const ContactForm = ({ content }: ContactFormProps) => {
       name="contact"
       method="POST"
       data-netlify="true"
+      data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
     >
+      {/* Required so Netlify knows which form this submission belongs to. */}
       <input type="hidden" name="form-name" value="contact" />
+      {/* Honeypot: hidden from real users; bots that fill it are silently dropped. */}
+      <p hidden>
+        <label>
+          Don’t fill this out if you’re human:{' '}
+          <input name="bot-field" tabIndex={-1} autoComplete="off" />
+        </label>
+      </p>
       <p className="mb-6 text-center text-base text-muted">
         {content.formIntro || 'OR! Send me a message here!'}
       </p>
@@ -128,6 +152,16 @@ export const ContactForm = ({ content }: ContactFormProps) => {
           className="form-control"
         />
       </FormField>
+
+      {error ? (
+        <p
+          className="mb-3 text-center text-[0.9rem] text-accent"
+          role="alert"
+          aria-live="polite"
+        >
+          {error}
+        </p>
+      ) : null}
 
       <button
         type="submit"

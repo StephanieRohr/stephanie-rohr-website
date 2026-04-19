@@ -23,6 +23,7 @@ const contactForm = defineCollection({
       })
       .optional(),
     successMessage: z.string().optional(),
+    errorMessage: z.string().optional(),
   }),
 })
 
