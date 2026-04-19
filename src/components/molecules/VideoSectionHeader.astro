@@ -9,32 +9,9 @@ const { heading, description, credits } = Astro.props
 ---
 
 <>
-  <h2 class="section-title">{heading}</h2>
-  <p class="section-desc">{description}</p>
-  <p class="section-credits">{credits}</p>
+  <h2 class="font-heading mb-3 text-2xl font-bold text-accent">{heading}</h2>
+  <p class="mb-2 max-w-[800px] text-[0.95rem] leading-7">{description}</p>
+  <p class="mb-6 text-[0.85rem] leading-6 whitespace-pre-line text-muted">
+    {credits}
+  </p>
 </>
-
-<style>
-  .section-title {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-accent);
-    margin-bottom: 0.75rem;
-  }
-
-  .section-desc {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 0.5rem;
-    max-width: 800px;
-  }
-
-  .section-credits {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    white-space: pre-line;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-  }
-</style>

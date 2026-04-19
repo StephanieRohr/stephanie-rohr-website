@@ -37,6 +37,10 @@
     }
   },
   "css": {
+    "parser": {
+      "cssModules": true,
+      "tailwindDirectives": true
+    },
     "formatter": {
       "indentWidth": 2
     }

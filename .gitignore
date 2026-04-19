@@ -24,7 +24,6 @@ pnpm-debug.log*
 .idea/
 
 # CLAUDE
-.claude
 CLAUDE.md
 **/CLAUDE.md
 

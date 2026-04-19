@@ -18,32 +18,32 @@ export const NavToggleButton = ({
       aria-controls={controls}
       aria-label="Toggle navigation"
       onClick={onClick}
-      className="nav-toggle"
+      className="group inline-flex size-12 cursor-pointer items-center justify-center border-0 bg-transparent transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] lg:hidden"
     >
       <span className="sr-only">Menu</span>
       <svg
-        className="nav-toggle-icon"
+        className="pointer-events-none size-6 fill-current"
         viewBox="0 0 16 16"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
         focusable="false"
       >
         <rect
-          className="nav-toggle-bar nav-toggle-bar--top"
+          className="origin-center -translate-y-[0.3125rem] translate-x-[0.4375rem] transition-all duration-300 ease-[cubic-bezier(0.5,0.85,0.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
           y="7"
           width="9"
           height="2"
           rx="1"
         />
         <rect
-          className="nav-toggle-bar nav-toggle-bar--middle"
+          className="origin-center transition-all duration-300 ease-[cubic-bezier(0.5,0.85,0.25,1.8)] group-aria-expanded:rotate-45"
           y="7"
           width="16"
           height="2"
           rx="1"
         />
         <rect
-          className="nav-toggle-bar nav-toggle-bar--bottom"
+          className="origin-center translate-y-[0.3125rem] transition-all duration-300 ease-[cubic-bezier(0.5,0.85,0.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
           y="7"
           width="9"
           height="2"

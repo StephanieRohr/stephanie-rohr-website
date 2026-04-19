@@ -13,7 +13,7 @@ interface Props {
 const { section } = Astro.props
 ---
 
-<div class="video-section">
+<div class="mb-4">
   <VideoSectionHeader
     heading={section.heading}
     description={section.description}
@@ -22,11 +22,5 @@ const { section } = Astro.props
 
   <slot />
 
-  <hr class="divider" />
+  <hr class="divider-line" />
 </div>
-
-<style>
-  .video-section {
-    margin-bottom: 1rem;
-  }
-</style>

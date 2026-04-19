@@ -11,55 +11,32 @@ const { Content } = await render(contentEntry)
 ---
 
 <Layout title="Photos | Stephanie's Portfolio">
-  <section class="section photos-section">
-    <h1 class="page-heading">
-      <span class="highlight">{contentEntry.data.pageHeading}</span>
+  <section class="section-wrapper">
+    <h1 class="page-title">
+      <span class="gradient-heading">{contentEntry.data.pageHeading}</span>
     </h1>
 
-    <div class="photos-intro">
+    <div class="mx-auto mb-8 max-w-[800px] text-center text-base leading-8">
       <p>
         <Content />
       </p>
     </div>
 
     <ImageGallery directory="ActionSportsPhotography" />
-
-    <hr class="divider" />
+    <hr class="divider-line" />
 
     <ImageGallery directory="EventPhotography" />
-
-    <hr class="divider" />
+    <hr class="divider-line" />
 
     <ImageGallery directory="Graphics" />
-
-    <hr class="divider" />
+    <hr class="divider-line" />
 
     <ImageGallery directory="HeadshotPhotos" />
-
-    <hr class="divider" />
+    <hr class="divider-line" />
 
     <ImageGallery directory="ProductPhotos" />
-
-    <hr class="divider" />
+    <hr class="divider-line" />
 
     <ImageGallery directory="ScenicNaturePhotos" />
   </section>
 </Layout>
-
-<style>
-  .photos-intro {
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    font-size: 1rem;
-    line-height: 1.8;
-    text-align: center;
-  }
-
-  .gallery-embed {
-    max-width: 800px;
-    margin: 2rem auto;
-    background: var(--color-bg);
-    border: 1px solid var(--color-line);
-    border-radius: 12px;
-  }
-</style>

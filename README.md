@@ -29,11 +29,11 @@ This is Stephanie Rohr's personal portfolio website. It showcases her work as a 
 | --- | --- | --- |
 | Home | `/` | Full-screen hero video (YouTube) |
 | About | `/about` | Headshot, bio paragraphs |
-| Videos | `/videos` | Grouped video sections (Wix-hosted + YouTube + SoundCloud) |
+| Videos | `/videos` | Grouped video sections (Wix-hosted + YouTube) |
 | Photos | `/photos` | Photography description + embedded gallery |
 | Contact | `/contact` | Email, phone, and a contact form |
 
-**Design:** Dark background, white text, teal accent color. Headings use the Raleway font. The header is sticky and semi-transparent. The footer shows the copyright year automatically.
+**Design:** White background, black text, gray accents, and Raleway headings. The footer shows the copyright year automatically.
 
 ---
 
@@ -45,11 +45,12 @@ The most important principle: **you almost never need to touch the code files** 
 src/content/
 ```
 
-Think of `src/content/` as the "filing cabinet" for the website. It has three drawers:
+Think of `src/content/` as the "filing cabinet" for the website. It has four drawers:
 
-- **`site/`** — Global info shared across every page (your name, nav links, social media, video list)
+- **`main/`** — Global info shared across every page (your name, contact info, nav links, social media)
 - **`pages/`** — Per-page copy (headings, bio text, descriptions)
-- **`components/`** — Copy for specific UI pieces (contact form labels, button text)
+- **`videos/`** — Video page sections and video entries
+- **`contactForm/`** — Contact form labels, button text, and messages
 
 Everything else under `src/` is the code that turns those files into the actual website. You shouldn't need to change those files for routine content updates.
 
@@ -57,16 +58,16 @@ Everything else under `src/` is the code that turns those files into the actual 
 
 ## Running the Site Locally
 
-You need [Bun](https://bun.sh) installed. Then from a terminal in this folder:
+You need [pnpm](https://pnpm.io/) installed. Then from a terminal in this folder:
 
 ```sh
-bun install                 # First time only — installs all dependencies
-bun run dev                 # Starts the dev server at http://localhost:4321
-bun run sync                # Syncs content collections (run this after adding new content files)
-bun run astro:check         # Checks for content formatting errors
-bun run astro:check:write   # Auto-fixes content formatting errors
-bun run biome:check         # Checks for code formatting errors
-bun run biome:check:write   # Auto-fixes code formatting errors
+pnpm install                 # First time only — installs all dependencies
+pnpm run dev                 # Starts the dev server at http://localhost:4321
+pnpm run sync                # Syncs content collections (run this after adding new content files)
+pnpm run astro:check         # Checks Astro, TypeScript, and content schemas
+pnpm run astro:check:write   # Auto-fixes Astro/content issues when possible
+pnpm run biome:check         # Checks code formatting and lint rules
+pnpm run biome:check:write   # Auto-fixes code formatting and lint issues
 ```
 
 Open `http://localhost:4321` in your browser and you'll see the site live. Any time you save a content file, the browser will automatically refresh.
@@ -74,7 +75,7 @@ Open `http://localhost:4321` in your browser and you'll see the site live. Any t
 To build the final production version:
 
 ```sh
-bun build        # Output goes to ./dist/
+pnpm run build        # Output goes to ./dist/
 ```
 
 ---
@@ -83,7 +84,7 @@ bun build        # Output goes to ./dist/
 
 ### Changing Your Name, Bio, or Contact Info
 
-Open **`src/content/site/main.md`**.
+Open **`src/content/main/main.md`**.
 
 This file controls global site-wide information:
 
@@ -127,9 +128,9 @@ The photo galleries are rendered from local images stored in subdirectories unde
 
 ### Adding or Editing Videos
 
-All video data lives in **`src/content/site/videos.md`**.
+All video data lives in **`src/content/videos/videos.md`**.
 
-There are three types of video sections:
+There are two types of video sections:
 
 #### 1. Wix-hosted videos (`videoSections`)
 
@@ -161,12 +162,6 @@ Same structure as above, but use a full YouTube URL instead of a `videoId`:
       orientation: landscape
 ```
 
-#### 3. Audio/SoundCloud (`promosSection`)
-
-This section embeds a SoundCloud player for your entire SoundCloud profile. To change the linked SoundCloud account, update the iframe `src` URL inside `src/pages/videos.astro` (search for `soundcloud.com`).
-
-The `heading` and `description` for this section are edited inside `src/content/site/videos.md` under the `promosSection` key.
-
 > **Tip:** Video sections appear on the page in the order they are listed in the file. To reorder sections, cut and paste the entire section block up or down in the file.
 
 ---
@@ -183,7 +178,7 @@ The Home page shows a full-screen YouTube video. To change it, open **`src/pages
 
 ### Editing the Contact Form
 
-Open **`src/content/components/contactForm.md`** to change:
+Open **`src/content/contactForm/contactForm.md`** to change:
 
 - **`formIntro`** — The text shown above the form
 - **`labels`** — The field labels (First Name, Last Name, Company, Email, Message)
@@ -197,7 +192,7 @@ Form submissions are handled by Netlify (the hosting platform) and delivered to 
 
 ### Updating Social Media Links
 
-Open **`src/content/site/main.md`** and find the `social` section:
+Open **`src/content/main/main.md`** and find the `social` section:
 
 ```yaml
 social:
@@ -217,7 +212,7 @@ To add a new social link, add a new entry to the list. To remove one, delete its
 
 ### Updating Navigation Links
 
-Open **`src/content/site/main.md`** and find the `nav` section:
+Open **`src/content/main/main.md`** and find the `nav` section:
 
 ```yaml
 nav:
@@ -247,7 +242,7 @@ Write your page content here. This is standard Markdown — paragraphs, **bold**
 
 **Step 2 — Create the page file** at `src/pages/yourpage.astro`. Copy the structure from an existing simple page like `src/pages/about.astro` and swap in your new content entry name (`yourpage`).
 
-**Step 3 — Add it to the nav** by editing `src/content/site/main.md` (see [Updating Navigation Links](#updating-navigation-links)).
+**Step 3 — Add it to the nav** by editing `src/content/main/main.md` (see [Updating Navigation Links](#updating-navigation-links)).
 
 ---
 
@@ -259,15 +254,16 @@ stephanie-rohr-website/
 ├── src/
 │   ├── content.config.ts # Content collection schemas (code)
 │   ├── content/          # ← All editable content lives here
-│   │   ├── site/
-│   │   │   ├── main.md   # Global: name, email, phone, nav, social links
-│   │   │   └── videos.md # All video sections and entries
+│   │   ├── main/
+│   │   │   └── main.md   # Global: name, email, phone, nav, social links
 │   │   ├── pages/
 │   │   │   ├── about.md  # About page copy and bio
 │   │   │   ├── contact.md
 │   │   │   ├── photos.md
 │   │   │   └── videos.md
-│   │   └── components/
+│   │   ├── videos/
+│   │   │   └── videos.md # All video sections and entries
+│   │   └── contactForm/
 │   │       └── contactForm.md  # Contact form labels and messages
 │   ├── images/           # Local images (headshot, photo galleries)
 │   ├── pages/            # Page templates (code — edit with care)
