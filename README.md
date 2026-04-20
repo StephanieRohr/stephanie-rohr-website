@@ -29,7 +29,7 @@ This is Stephanie Rohr's personal portfolio website. It showcases her work as a 
 | --- | --- | --- |
 | Home | `/` | Full-screen hero video (YouTube) |
 | About | `/about` | Headshot, bio paragraphs |
-| Videos | `/videos` | Grouped video sections (Wix-hosted + YouTube) |
+| Videos | `/videos` | Grouped YouTube video sections |
 | Photos | `/photos` | Photography description + embedded gallery |
 | Contact | `/contact` | Email, phone, and a contact form |
 
@@ -130,29 +130,13 @@ The photo galleries are rendered from local images stored in subdirectories unde
 
 All video data lives in **`src/content/videos/videos.md`**.
 
-There are two types of video sections:
-
-#### 1. Wix-hosted videos (`videoSections`)
-
-These are videos stored on the Wix CDN. Each section has a heading and a list of videos. Each video needs:
+Video sections are grouped under `youTubeVideoSections`. Each section has a heading and a list of videos. Each video needs:
 
 - **`title`** — The display name shown below the video
-- **`videoId`** — The Wix video ID (the long string from your Wix media manager URL)
+- **`videoUrl`** — The full YouTube URL
 - **`orientation`** — Either `landscape` or `portrait`
 
 Example of adding a new section with one video:
-
-```yaml
-- heading: "My New Project"
-  videos:
-    - title: "Project Highlight Reel"
-      videoId: "21bb34_abc123def456..."
-      orientation: landscape
-```
-
-#### 2. YouTube videos (`youTubeVideoSections`)
-
-Same structure as above, but use a full YouTube URL instead of a `videoId`:
 
 ```yaml
 - heading: "YouTube Work"
