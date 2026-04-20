@@ -41,16 +41,15 @@ Four Zod-validated collections control site content:
 
 - **`main`**: global site data such as name, title, description, contact details, navigation links, and social links.
 - **`pages`**: per-page copy for about, contact, photos, and videos.
-- **`videos`**: video page sections for Wix-hosted videos (`videoSections`) and YouTube videos (`youTubeVideoSections`).
+- **`videos`**: video page sections for YouTube videos (`youTubeVideoSections`).
 - **`contactForm`**: contact form copy, labels, button states, and success message.
 
 After adding, renaming, or removing content files, run `pnpm run sync` if Astro content types are stale.
 
 ### Video Player
 
-`src/components/atoms/VideoPlayer.tsx` is a polymorphic React component with three variants:
+`src/components/atoms/VideoPlayer.tsx` is a polymorphic React component with two variants:
 
-- **`wix`**: builds a direct Wix MP4 URL from `videoId`, using `https://video.wixstatic.com/video/{id}/720p/mp4/file.mp4`.
 - **`youtube`**: passes a YouTube URL to `react-player`.
 - **`youtube-hero`**: full-width home page hero player.
 
