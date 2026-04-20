@@ -5,8 +5,6 @@ import { VideoPlayer } from '../components/atoms/VideoPlayer'
 import VideoSection from '../components/organisms/VideoSection.astro'
 import Layout from '../layouts/Layout.astro'
 import type {
-  VideoItem,
-  VideoSection as VideoSectionType,
   YouTubeVideoItem,
   YouTubeVideoSection as YouTubeVideoSectionType,
 } from '../types/video.types'
@@ -17,7 +15,6 @@ if (!contentEntry) throw new Error('Videos page content not found')
 const videosEntry = await getEntry('videos', 'videos')
 if (!videosEntry) throw new Error('Videos data not found')
 
-const videoSections = videosEntry.data.videoSections || []
 const youTubeVideoSections = videosEntry.data.youTubeVideoSections || []
 ---
 
@@ -26,31 +23,6 @@ const youTubeVideoSections = videosEntry.data.youTubeVideoSections || []
     <h1 class="page-title">
       <span class="gradient-heading">{contentEntry.data.pageHeading}</span>
     </h1>
-
-    <!-- {
-      videoSections.map((section: VideoSectionType) => (
-        <VideoSection section={section}>
-          {section.videos.length > 0 && (
-            <div class="mb-4 grid grid-cols-1 gap-6 sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
-              {section.videos.map((video: VideoItem) => (
-                <div
-                  class:list={[
-                    'w-full justify-self-center',
-                    video.orientation === 'landscape' && 'sm:col-span-3',
-                  ]}
-                >
-                  <VideoPlayer type="wix" video={video} client:visible />
-                  <p class="mt-2 text-center text-[0.85rem] text-muted">
-                    {video.title}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
-        </VideoSection>
-      ))
-    } -->
-
     {
       youTubeVideoSections.map((section: YouTubeVideoSectionType) => (
         <VideoSection section={section}>

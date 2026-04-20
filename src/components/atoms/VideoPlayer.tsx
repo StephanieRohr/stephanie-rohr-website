@@ -26,16 +26,6 @@ type VideoPlayerProps =
 
 const getPlayerConfig = (props: VideoPlayerProps) => {
   switch (props.type) {
-    // case 'wix':
-    //   return {
-    //     videoUrl: wixVideoUrl(props.video.videoId, '720p'),
-    //     aspectRatio:
-    //       props.video.orientation === 'portrait' ? '9 / 16' : '16 / 9',
-    //     autoplay: props.autoplay ?? true,
-    //     loop: props.loop ?? true,
-    //     muted: props.muted ?? true,
-    //     boxShadow: undefined,
-    //   }
     case 'youtube':
       return {
         videoUrl: props.video.videoUrl,
@@ -68,7 +58,6 @@ export const VideoPlayer = (props: VideoPlayerProps) => {
       src={config.videoUrl}
       controls
       playing={config.autoplay}
-      // playsInline={props.type === 'wix'}
       loop={config.loop}
       muted={config.muted}
       style={{

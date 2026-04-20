@@ -1,13 +1,9 @@
 ---
-import type {
-  Section,
-  VideoSection,
-  YouTubeVideoSection,
-} from '../../types/video.types'
+import type { YouTubeVideoSection } from '../../types/video.types'
 import VideoSectionHeader from '../molecules/VideoSectionHeader.astro'
 
 interface Props {
-  section: Section | VideoSection | YouTubeVideoSection
+  section: YouTubeVideoSection
 }
 
 const { section } = Astro.props

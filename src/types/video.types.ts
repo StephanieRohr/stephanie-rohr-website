@@ -1,25 +1,12 @@
-export interface VideoItem {
-  title: string
-  videoId: string
-  orientation: 'landscape' | 'portrait'
-}
-
-export interface Section {
-  heading: string
-  description: string
-  credits: string
-}
-
-export interface VideoSection extends Section {
-  videos: VideoItem[]
-}
-
 export interface YouTubeVideoItem {
   title: string
   videoUrl: string
   orientation: 'landscape' | 'portrait'
 }
 
-export interface YouTubeVideoSection extends Section {
+export interface YouTubeVideoSection {
+  heading: string
+  description: string
+  credits: string
   videos: YouTubeVideoItem[]
 }
