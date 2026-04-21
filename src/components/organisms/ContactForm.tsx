@@ -80,7 +80,7 @@ export const ContactForm = ({ content }: ContactFormProps) => {
       {/* Honeypot: hidden from real users; bots that fill it are silently dropped. */}
       <p hidden>
         <label>
-          Don’t fill this out if you’re human:{' '}
+          Don't fill this out if you're human:{' '}
           <input name="bot-field" tabIndex={-1} autoComplete="off" />
         </label>
       </p>
