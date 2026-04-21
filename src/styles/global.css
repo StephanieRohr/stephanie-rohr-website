@@ -54,10 +54,6 @@
   );
 }
 
-@utility gradient-hero {
-  background: linear-gradient(180deg, #fff 0%, rgb(220 220 220) 100%);
-}
-
 @utility hairline-top {
   &::before {
     content: "";
