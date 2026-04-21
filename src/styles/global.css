@@ -126,7 +126,6 @@
   color: var(--color-fg);
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  transition: border-color 0.2s, border-width 0.2s;
 
   &:focus {
     outline: none;
