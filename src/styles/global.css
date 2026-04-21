@@ -119,16 +119,19 @@
   width: 100%;
   padding: 0.65rem 0.75rem;
   background: transparent;
-  border: 1px solid var(--color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(0 0 0);
   border-radius: 4px;
   color: var(--color-fg);
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, border-width 0.2s;
 
   &:focus {
     outline: none;
     border-color: var(--color-accent);
+    border-width: 2px;
   }
 }
 
