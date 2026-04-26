@@ -20,6 +20,7 @@
     "@astrojs/netlify": "^7.0.7",
     "@astrojs/react": "5.0.3",
     "@tailwindcss/vite": "^4.2.2",
+    "@tanstack/react-query": "^5.100.5",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "astro": "^6.1.8",

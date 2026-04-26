@@ -1,13 +1,10 @@
 ---
 import { getEntry } from 'astro:content'
 
-import { VideoPlayer } from '../components/atoms/VideoPlayer'
+import { PlaylistPlayer } from '../components/organisms/PlaylistPlayer'
 import VideoSection from '../components/organisms/VideoSection.astro'
 import Layout from '../layouts/Layout.astro'
-import type {
-  YouTubeVideoItem,
-  YouTubeVideoSection as YouTubeVideoSectionType,
-} from '../types/video.types'
+import type { YouTubeVideoPlaylist } from '../types/video.types'
 
 const contentEntry = await getEntry('pages', 'videos')
 if (!contentEntry) throw new Error('Videos page content not found')
@@ -15,7 +12,7 @@ if (!contentEntry) throw new Error('Videos page content not found')
 const videosEntry = await getEntry('videos', 'videos')
 if (!videosEntry) throw new Error('Videos data not found')
 
-const youTubeVideoSections = videosEntry.data.youTubeVideoSections || []
+const playlists = videosEntry.data.youTubeVideoPlaylists || []
 ---
 
 <Layout title="Videos | Stephanie's Portfolio">
@@ -24,25 +21,16 @@ const youTubeVideoSections = videosEntry.data.youTubeVideoSections || []
       <span class="gradient-heading">{contentEntry.data.pageHeading}</span>
     </h1>
     {
-      youTubeVideoSections.map((section: YouTubeVideoSectionType) => (
-        <VideoSection section={section}>
-          {section.videos.length > 0 && (
-            <div class="mb-4 grid grid-cols-1 gap-6 sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
-              {section.videos.map((video: YouTubeVideoItem) => (
-                <div
-                  class:list={[
-                    'w-full justify-self-center',
-                    video.orientation === 'landscape' && 'sm:col-span-3',
-                  ]}
-                >
-                  <VideoPlayer type="youtube" video={video} client:visible />
-                  <p class="mt-2 text-center text-[0.85rem] text-muted">
-                    {video.title}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
+      playlists.map((playlist: YouTubeVideoPlaylist) => (
+        <VideoSection playlist={playlist}>
+          <div class="mb-4">
+            <PlaylistPlayer
+              playlistUrl={playlist.url}
+              orientation={playlist.orientation}
+              title={playlist.heading}
+              client:visible
+            />
+          </div>
         </VideoSection>
       ))
     }
