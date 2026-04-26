@@ -43,12 +43,12 @@ export const NavigationMenu = ({ nav, social }: NavigationMenuProps) => {
         {nav.map((item) => (
           <li
             key={item.href}
-            className="border-b border-line py-3 last:border-0 lg:border-0 lg:p-0"
+            className="border-b border-line py-3 text-[0.85rem] last:border-0 lg:border-0 lg:p-0"
           >
             <a
               href={item.href}
               onClick={closeMenu}
-              className="font-heading relative py-1 text-[0.85rem] font-bold tracking-[0.15em] uppercase transition-colors hover:text-accent after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:gradient-underline after:transition-[width] hover:after:w-full"
+              className="font-heading relative py-1 font-bold tracking-[0.15em] uppercase transition-colors hover:text-accent after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:gradient-underline after:transition-[width] hover:after:w-full"
             >
               {item.label}
             </a>
