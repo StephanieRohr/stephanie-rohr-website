@@ -177,6 +177,14 @@
     color: var(--color-accent-strong);
   }
 
+  /* Links inside body text need a non-color distinguisher (underline) to
+     meet WCAG; component links (nav, brand, social, buttons) live outside
+     paragraphs and keep their own styling. */
+  p a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
   textarea {
     resize: vertical;
   }
