@@ -163,10 +163,7 @@ export const fetchPlaylistVideos = (
           playerVars: { listType: 'playlist', list: playlistId },
           events: {
             onReady: async (event) => {
-              const ids = await waitForPlaylistIds(
-                event.target,
-                () => settled,
-              )
+              const ids = await waitForPlaylistIds(event.target, () => settled)
 
               if (settled) return
               destroyPlayer(event.target)
