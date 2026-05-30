@@ -16,6 +16,12 @@ interface Props {
 
 const { directory } = Astro.props
 
+const humanize = (s: string) => {
+  const words = s.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase()
+  return words.charAt(0).toUpperCase() + words.slice(1)
+}
+const label = humanize(directory)
+
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/**/*.{jpeg,jpg,png,gif}',
   { eager: true },
@@ -23,10 +29,11 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>(
 
 const images = Object.entries(allImages)
   .filter(([path]) => path.startsWith(`/src/images/${directory}/`))
-  .map(([, mod]) => ({
+  .map(([, mod], i) => ({
     src: mod.default.src,
     width: mod.default.width,
     height: mod.default.height,
+    alt: `${label} — photo ${i + 1}`,
   }))
 ---
 
