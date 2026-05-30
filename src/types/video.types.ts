@@ -1,12 +1,7 @@
-export interface YouTubeVideoItem {
-  title: string
-  videoUrl: string
-  orientation: 'landscape' | 'portrait'
-}
-
-export interface YouTubeVideoSection {
+export interface YouTubeVideoPlaylist {
   heading: string
   description: string
   credits: string
-  videos: YouTubeVideoItem[]
+  url: string
+  orientation: 'landscape' | 'portrait'
 }

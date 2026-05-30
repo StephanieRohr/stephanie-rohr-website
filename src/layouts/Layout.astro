@@ -33,14 +33,14 @@ const {
     <ClientRouter />
     <title>{title}</title>
   </head>
-  <body class="bg-line">
+  <body class="antialiased bg-line">
     <Header
       links={siteEntry.data.nav}
       name={siteEntry.data.name}
       social={siteEntry.data.social}
     />
 
-    <main>
+    <main class="isolate">
       <slot />
     </main>
 

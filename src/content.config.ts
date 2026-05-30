@@ -68,20 +68,14 @@ const videos = defineCollection({
     pattern: '**/*.{md,mdx}',
   }),
   schema: z.object({
-    youTubeVideoSections: z
+    youTubeVideoPlaylists: z
       .array(
         z.object({
           heading: z.string(),
-          subheading: z.string().optional(),
           description: z.string(),
           credits: z.string(),
-          videos: z.array(
-            z.object({
-              title: z.string(),
-              videoUrl: z.string(),
-              orientation: z.enum(['landscape', 'portrait']),
-            }),
-          ),
+          url: z.string(),
+          orientation: z.enum(['landscape', 'portrait']),
         }),
       )
       .optional(),

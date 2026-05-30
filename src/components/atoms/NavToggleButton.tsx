@@ -18,7 +18,7 @@ export const NavToggleButton = ({
       aria-controls={controls}
       aria-label="Toggle navigation"
       onClick={onClick}
-      className="group inline-flex size-12 cursor-pointer items-center justify-center border-0 bg-transparent transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] lg:hidden"
+      className="group inline-flex size-12 items-center justify-center transition-all duration-150 ease-in-out lg:hidden"
     >
       <span className="sr-only">Menu</span>
       <svg
@@ -29,7 +29,7 @@ export const NavToggleButton = ({
         focusable="false"
       >
         <rect
-          className="origin-center -translate-y-[0.3125rem] translate-x-[0.4375rem] transition-all duration-300 ease-[cubic-bezier(0.5,0.85,0.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
+          className="origin-center -translate-y-1.25 translate-x-1.75 transition-all duration-300 ease-[cubic-bezier(0.5,0.85,0.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-315"
           y="7"
           width="9"
           height="2"
@@ -43,7 +43,7 @@ export const NavToggleButton = ({
           rx="1"
         />
         <rect
-          className="origin-center translate-y-[0.3125rem] transition-all duration-300 ease-[cubic-bezier(0.5,0.85,0.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
+          className="origin-center translate-y-1.25 transition-all duration-300 ease-[cubic-bezier(0.5,0.85,0.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-135"
           y="7"
           width="9"
           height="2"

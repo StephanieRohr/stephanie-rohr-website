@@ -1,19 +1,19 @@
 ---
-import type { YouTubeVideoSection } from '../../types/video.types'
+import type { YouTubeVideoPlaylist } from '../../types/video.types'
 import VideoSectionHeader from '../molecules/VideoSectionHeader.astro'
 
 interface Props {
-  section: YouTubeVideoSection
+  playlist: YouTubeVideoPlaylist
 }
 
-const { section } = Astro.props
+const { playlist } = Astro.props
 ---
 
 <div class="mb-4">
   <VideoSectionHeader
-    heading={section.heading}
-    description={section.description}
-    credits={section.credits}
+    heading={playlist.heading}
+    description={playlist.description}
+    credits={playlist.credits}
   />
 
   <slot />

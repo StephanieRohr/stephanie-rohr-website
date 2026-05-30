@@ -27,6 +27,7 @@ pnpm-debug.log*
 CLAUDE.md
 **/CLAUDE.md
 
+// IDE
 .vscode
 
 # Local Netlify folder

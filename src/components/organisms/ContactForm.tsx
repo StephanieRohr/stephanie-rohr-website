@@ -68,7 +68,7 @@ export const ContactForm = ({ content }: ContactFormProps) => {
 
   return (
     <form
-      className="mx-auto max-w-[500px]"
+      className="mx-auto max-w-125"
       name="contact"
       method="POST"
       data-netlify="true"
@@ -166,7 +166,7 @@ export const ContactForm = ({ content }: ContactFormProps) => {
       <button
         type="submit"
         disabled={sending}
-        className="font-heading mt-2 w-full cursor-pointer rounded border-0 bg-accent p-3 text-[0.95rem] font-bold tracking-[0.1em] text-white transition-colors hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-60"
+        className="font-heading mt-2 w-full rounded bg-accent p-3 text-[0.95rem] font-bold tracking-widest text-white transition-colors hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-60"
       >
         {sending
           ? content.submitButton?.sending || 'Sending...'

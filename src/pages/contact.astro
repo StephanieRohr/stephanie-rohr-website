@@ -15,7 +15,7 @@ if (!mainEntry) throw new Error('Site data not found')
 ---
 
 <Layout title="Contact | Stephanie's Portfolio">
-  <section class="section-wrapper max-w-[600px]">
+  <section class="section-wrapper max-w-150">
     <h1 class="page-title">
       <span class="gradient-heading">{contentEntry.data.pageHeading}</span>
     </h1>
@@ -26,7 +26,9 @@ if (!mainEntry) throw new Error('Site data not found')
     </h2>
 
     <div class="mb-4 text-center">
-      <p class="mb-2 text-[0.9rem] text-muted">{contentEntry.data.reachLabel}</p>
+      <p class="mb-2 text-[0.9rem] text-muted">
+        {contentEntry.data.reachLabel}
+      </p>
       <p class="mb-1 text-[1.1rem]">
         <a href={`mailto:${mainEntry.data.email}`}>{mainEntry.data.email}</a>
       </p>
@@ -37,28 +39,28 @@ if (!mainEntry) throw new Error('Site data not found')
       </p>
     </div>
 
-    <hr class="divider-line" />
+    <hr class="divider-line">
 
-    {/*
+    <!-- 
       Hidden static HTML blueprint so Netlify detects the form at build time.
       Netlify parses static HTML after the build to register forms; React
       islands hydrated client-side are invisible to that parser, so we mirror
       every field name (and the honeypot) here. The interactive form is
       rendered by <ContactForm /> below.
       Docs: https://docs.netlify.com/manage/forms/setup/#javascript-rendered-forms
-    */}
+    -->
     <form
       name="contact"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       hidden
     >
-      <input type="text" name="first-name" />
-      <input type="text" name="last-name" />
-      <input type="text" name="company" />
-      <input type="email" name="email" />
+      <input type="text" name="first-name">
+      <input type="text" name="last-name">
+      <input type="text" name="company">
+      <input type="email" name="email">
       <textarea name="message"></textarea>
-      <input type="text" name="bot-field" />
+      <input type="text" name="bot-field">
     </form>
 
     <ContactForm client:visible content={contactFormEntry.data} />
