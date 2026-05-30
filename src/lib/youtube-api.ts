@@ -124,6 +124,11 @@ export const fetchPlaylistVideos = (
   signal?: AbortSignal,
 ): Promise<PlaylistVideo[]> =>
   new Promise((resolve, reject) => {
+    if (signal?.aborted) {
+      reject(signal.reason)
+      return
+    }
+
     const { target, cleanup } = createHiddenPlayerHost()
     let settled = false
     let player: YTPlayer | null = null
@@ -139,9 +144,11 @@ export const fetchPlaylistVideos = (
       callback()
     }
 
-    signal?.addEventListener('abort', () => {
-      finish(() => reject(signal.reason))
-    })
+    signal?.addEventListener(
+      'abort',
+      () => finish(() => reject(signal.reason)),
+      { once: true },
+    )
 
     const start = async () => {
       try {
