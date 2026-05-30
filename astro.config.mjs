@@ -13,6 +13,8 @@ export default defineConfig({
       name: 'Raleway',
       cssVariable: '--font-heading',
       provider: fontProviders.google(),
+      weights: [400, 700], // 700 = headings/nav/buttons; 400 = form labels
+      styles: ['normal'], // no italics used — trims the download
     },
   ],
   vite: {

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
 import { MasonryPhotoAlbum } from 'react-photo-album'
-import 'react-photo-album/rows.css'
+import SSR from 'react-photo-album/ssr'
+import 'react-photo-album/masonry.css'
 
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
@@ -15,6 +16,7 @@ interface GalleryImage {
   src: string
   width: number
   height: number
+  alt: string
 }
 
 interface Props {
@@ -26,11 +28,13 @@ export const ImageGalleryLightbox = ({ images }: Props) => {
 
   return (
     <>
-      <MasonryPhotoAlbum
-        photos={images}
-        columns={3}
-        onClick={({ index }) => setIndex(index)}
-      />
+      <SSR breakpoints={[300, 600, 900, 1200]}>
+        <MasonryPhotoAlbum
+          photos={images}
+          columns={3}
+          onClick={({ index }) => setIndex(index)}
+        />
+      </SSR>
 
       <Lightbox
         slides={images}

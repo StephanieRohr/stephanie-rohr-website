@@ -20,7 +20,7 @@ export const PlaylistSidebar = ({
 }: PlaylistSidebarProps) => (
   <div
     className={clsx(
-      isPortrait ? 'relative min-w-0 sm:flex-1' : 'max-h-64 overflow-y-auto',
+      isPortrait ? 'relative min-w-0 sm:flex-1' : 'h-64 overflow-y-auto',
       className,
     )}
   >
