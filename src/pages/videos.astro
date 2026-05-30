@@ -20,8 +20,8 @@ const playlists = videosEntry.data.youTubeVideoPlaylists || []
     <h1 class="page-title">
       <span class="gradient-heading">{contentEntry.data.pageHeading}</span>
     </h1>
-    {
-      playlists.map((playlist: YouTubeVideoPlaylist) => (
+    {playlists.map((playlist: YouTubeVideoPlaylist) => (
+        // biome-ignore lint/correctness/useJsxKeyInIterable: Astro components are statically rendered, key is not needed
         <VideoSection playlist={playlist}>
           <div class="mb-4">
             <PlaylistPlayer
@@ -32,7 +32,6 @@ const playlists = videosEntry.data.youTubeVideoPlaylists || []
             />
           </div>
         </VideoSection>
-      ))
-    }
+      ))}
   </section>
 </Layout>
