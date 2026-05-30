@@ -32,14 +32,18 @@ export const PlaylistItem = ({
       className="h-11 w-19 shrink-0 rounded object-cover outline-1 -outline-offset-1 outline-black/5 sm:h-9 sm:w-16"
     />
     <div className="min-w-0 flex-1">
-      <p
-        className={clsx(
-          'truncate text-base/5 sm:text-[0.85rem]/4.5',
-          isActive ? 'font-medium text-fg' : 'text-muted',
-        )}
-      >
-        {video.title}
-      </p>
+      {video.title !== null ? (
+        <p
+          className={clsx(
+            'truncate text-base/5 sm:text-[0.85rem]/4.5',
+            isActive ? 'font-medium text-fg' : 'text-muted',
+          )}
+        >
+          {video.title}
+        </p>
+      ) : (
+        <div className="h-4 w-3/4 animate-pulse rounded bg-fg/6 sm:h-3.5" />
+      )}
     </div>
   </button>
 )

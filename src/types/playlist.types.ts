@@ -1,6 +1,6 @@
 export interface PlaylistVideo {
   videoId: string
-  title: string
+  title: string | null
   thumbnail: string
 }
 

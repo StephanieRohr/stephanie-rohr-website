@@ -11,6 +11,12 @@ export const extractPlaylistId = (url: string): string | null =>
 export const getVideoUrl = (videoId: string) =>
   `https://www.youtube.com/watch?v=${videoId}`
 
+const videoFromId = (videoId: string): PlaylistVideo => ({
+  videoId,
+  title: null,
+  thumbnail: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+})
+
 const getYouTubeWindow = (): YouTubeWindow => globalThis as YouTubeWindow
 
 const createYouTubeAPIScript = (onError: () => void) => {
@@ -52,7 +58,7 @@ const loadYouTubeAPI = (): Promise<YTGlobal> =>
     }
   })
 
-const fetchTitle = async (videoId: string): Promise<string> => {
+export const fetchTitle = async (videoId: string): Promise<string> => {
   try {
     const response = await fetch(
       `https://noembed.com/embed?url=https://www.youtube.com/watch?v=${videoId}`,
@@ -106,12 +112,6 @@ const waitForPlaylistIds = async (player: YTPlayer): Promise<string[]> => {
   return []
 }
 
-const toPlaylistVideo = async (videoId: string): Promise<PlaylistVideo> => ({
-  videoId,
-  title: await fetchTitle(videoId),
-  thumbnail: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
-})
-
 export const fetchPlaylistVideos = (
   playlistId: string,
   signal?: AbortSignal,
@@ -156,8 +156,7 @@ export const fetchPlaylistVideos = (
                 return
               }
 
-              const videos = await Promise.all(ids.map(toPlaylistVideo))
-              finish(() => resolve(videos))
+              finish(() => resolve(ids.map(videoFromId)))
             },
           },
         })
