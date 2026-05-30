@@ -45,6 +45,8 @@ const loadYouTubeAPI = (): Promise<YTGlobal> =>
       prev?.()
       if (win.YT?.Player) {
         resolve(win.YT)
+      } else {
+        reject(new Error('YouTube IFrame API ready but YT.Player unavailable'))
       }
     }
 
