@@ -17,6 +17,7 @@ export const PlaylistItem = ({
 }: PlaylistItemProps) => (
   <button
     type="button"
+    aria-label={video.title ?? `Video ${video.videoId}`}
     onClick={() => onSelect(video.videoId)}
     className={clsx(
       'flex w-full items-center gap-3 rounded-lg p-2 text-left outline-1 -outline-offset-1',
