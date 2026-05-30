@@ -98,8 +98,13 @@ const destroyPlayer = (player: YTPlayer) => {
   }
 }
 
-const waitForPlaylistIds = async (player: YTPlayer): Promise<string[]> => {
+const waitForPlaylistIds = async (
+  player: YTPlayer,
+  isCancelled: () => boolean,
+): Promise<string[]> => {
   for (let attempt = 0; attempt < 10; attempt += 1) {
+    if (isCancelled()) return []
+
     const ids = player.getPlaylist() ?? []
 
     if (ids.length > 0) {
@@ -119,6 +124,7 @@ export const fetchPlaylistVideos = (
   new Promise((resolve, reject) => {
     const { target, cleanup } = createHiddenPlayerHost()
     let settled = false
+    let player: YTPlayer | null = null
 
     const finish = (callback: () => void) => {
       if (settled) {
@@ -126,26 +132,36 @@ export const fetchPlaylistVideos = (
       }
 
       settled = true
+      if (player) destroyPlayer(player)
       cleanup()
       callback()
     }
 
-    // Clean up if React Query cancels the query (unmount, invalidation, etc.)
     signal?.addEventListener('abort', () => {
       finish(() => reject(signal.reason))
     })
 
     const start = async () => {
       try {
+        if (settled) return
+
         const YT = await loadYouTubeAPI()
-        const tempPlayer = new YT.Player(target, {
+        if (settled) return
+
+        player = new YT.Player(target, {
           width: 1,
           height: 1,
           playerVars: { listType: 'playlist', list: playlistId },
           events: {
             onReady: async (event) => {
-              const ids = await waitForPlaylistIds(event.target)
+              const ids = await waitForPlaylistIds(
+                event.target,
+                () => settled,
+              )
+
+              if (settled) return
               destroyPlayer(event.target)
+              player = null
 
               if (ids.length === 0) {
                 finish(() =>
@@ -162,7 +178,6 @@ export const fetchPlaylistVideos = (
         })
 
         setTimeout(() => {
-          destroyPlayer(tempPlayer)
           finish(() =>
             reject(
               new Error(`Playlist ${playlistId} timed out after 30 seconds`),
