@@ -11,7 +11,7 @@ youTubeVideoPlaylists:
     url: "https://www.youtube.com/playlist?list=PLi3BcPUk21Tyc-autHiH8AKuw2cNNZlMj"
     orientation: "landscape"
   - heading: "Shorts, Reels, TikToks"
-    description: "Showcases edits made for social media platforms: YouTube Shorts, Instagram, Facebook, TikTok, LinkedIn peace."
+    description: "Showcases edits made for social media platforms: YouTube Shorts, Instagram, Facebook, TikTok, LinkedIn"
     credits: ""
     url: "https://youtube.com/playlist?list=PLi3BcPUk21TzGnuERIkcUeF5TEdhWPsL9&si=oM60cuVr5pNIjcOw"
     orientation: "portrait"
